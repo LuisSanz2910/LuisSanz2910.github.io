@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luis Sánchez · Senior Full-Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --surface2: #1c1c26;
+      --border: #2a2a38;
+      --text: #f0f0f5;
+      --muted: #7a7a92;
+      --accent: #6c63ff;
+      --accent2: #a78bfa;
+      --green: #22d3a0;
+      --font: 'Inter', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      background: rgba(34, 211, 160, 0.08);
+      border: 1px solid rgba(34, 211, 160, 0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .name {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .name span { color: var(--accent2); }
+
+    .title-line {
+      font-size: 14px;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin-bottom: 1.4rem;
+    }
+
+    .bio {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #b0b0c8;
+      max-width: 580px;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      gap: 2rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .stat-item { display: flex; flex-direction: column; gap: 2px; }
+
+    .stat-n {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .stat-n span { color: var(--accent2); }
+
+    .stat-l {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 2rem 0 1rem;
+    }
+
+    /* ── LINKS GRID ── */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .link-card:hover {
+      border-color: var(--accent);
+      background: var(--surface2);
+    }
+
+    .link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .link-info { display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+    .link-name { font-size: 13px; font-weight: 500; }
+    .link-sub { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .li-bg  { background: rgba(10, 102, 194, 0.15); }
+    .gh-bg  { background: rgba(240, 240, 245, 0.08); }
+    .ml-bg  { background: rgba(108, 99, 255, 0.15); }
+    .cv-bg  { background: rgba(34, 211, 160, 0.10); }
+    .yt-bg  { background: rgba(255, 0, 0, 0.12); }
+    .tw-bg  { background: rgba(29, 155, 240, 0.12); }
+
+    /* ── SKILLS ── */
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.5rem; }
+
+    .skill-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: #c8c8e0;
+    }
+
+    .skill-tag.hot {
+      border-color: rgba(108, 99, 255, 0.4);
+      color: var(--accent2);
+      background: rgba(108, 99, 255, 0.08);
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { margin-top: 0.5rem; display: flex; flex-direction: column; }
+
+    .tl-item {
+      display: flex;
+      gap: 16px;
+      padding-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .tl-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 20px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .tl-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+      flex-shrink: 0;
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-dot.current {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+    }
+
+    .tl-body { flex: 1; }
+    .tl-role { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+    .tl-company { font-size: 12px; color: var(--accent2); margin-bottom: 4px; }
+    .tl-period { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+
+    /* ── ACHIEVEMENTS ── */
+    .ach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 8px;
+      margin-top: 0.5rem;
+    }
+
+    .ach-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .ach-num { font-size: 20px; font-weight: 600; color: var(--green); font-family: var(--mono); }
+    .ach-desc { font-size: 11px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .footer-name { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+    .footer-tag { font-size: 11px; color: rgba(34, 211, 160, 0.6); font-family: var(--mono); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 480px) {
+      .page { padding: 2rem 1rem 4rem; }
+      .stats { gap: 1.2rem; }
+      .links-grid { grid-template-columns: 1fr; }
+      .ach-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="tag">open to new challenges</div>
+      <h1 class="name">Luis <span>Sánchez</span></h1>
+      <p class="title-line">Senior Full-Stack Developer · Lima, Perú</p>
+      <p class="bio">
+        Ingeniero de Sistemas con 7+ años construyendo plataformas críticas en banca, seguros,
+        telecomunicaciones y minería. Referente técnico, puente entre negocio y tecnología,
+        e integrador de IA generativa en equipos de desarrollo.
+      </p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-n">7<span>+</span></span>
+        <span class="stat-l">años de experiencia</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-n">−30<span>%</span></span>
+        <span class="stat-l">Dev time con IA</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-n">2K</span>
+        <span class="stat-l">Transacciones/seg</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-n">−40<span>%</span></span>
+        <span class="stat-l">Tiempo a producción</span>
+      </div>
+    </div>
+
+    <!-- LINKS -->
+    <p class="section-label">Encuéntrame en</p>
+    <div class="links-grid">
+
+      <a class="link-card" href="https://linkedin.com/in/lnsanchezro" target="_blank" rel="noopener">
+        <div class="link-icon li-bg">
+          <i class="ti ti-brand-linkedin" style="color:#0a66c2"></i>
+        </div>
+        <div class="link-info">
+          <span class="link-name">LinkedIn</span>
+          <span class="link-sub">lnsanchezro</span>
+        </div>
+      </a>
+
+      <a class="link-card" href="https://github.com/LuisSanz2910" target="_blank" rel="noopener">
+        <div class="link-icon gh-bg">
+          <i class="ti ti-brand-github" style="color:#f0f0f5"></i>
+        </div>
+        <div class="link-info">
+          <span class="link-name">GitHub</span>
+          <span class="link-sub">LuisSanz2910</span>
+        </div>
+      </a>
+
+      <a class="link-card" href="mailto:luis.sanz.2910@gmail.com">
+        <div class="link-icon ml-bg">
+          <i class="ti ti-mail" style="color:#a78bfa"></i>
+        </div>
+        <div class="link-info">
+          <span class="link-name">Email</span>
+          <span class="link-sub">luis.sanz.2910@gmail.com</span>
+        </div>
+      </a>
+
+      <!-- 
+        CV: sube tu PDF a la raíz del repo con el nombre "cv-luis-sanchez.pdf"
+        y descomenta el href de abajo. 
+      -->
+      <a class="link-card" href="cv-luis-sanchez.pdf" target="_blank">
+        <div class="link-icon cv-bg">
+          <i class="ti ti-file-cv" style="color:#22d3a0"></i>
+        </div>
+        <div class="link-info">
+          <span class="link-name">Curriculum Vitae</span>
+          <span class="link-sub">Descargar PDF</span>
+        </div>
+      </a>
+
+      <!-- YouTube: reemplaza "#" con tu URL cuando lo crees -->
+      <a class="link-card" href="#" target="_blank" rel="noopener">
+        <div class="link-icon yt-bg">
+          <i class="ti ti-brand-youtube" style="color:#ff4444"></i>
+        </div>
+        <div class="link-info">
+          <span class="link-name">YouTube</span>
+          <span class="link-sub">Próximamente · tech content</span>
+        </div>
+      </a>
+
+      <!-- Twitter/X: reemplaza "#" con tu usuario cuando quieras -->
+      <a class="link-card" href="#" target="_blank" rel="noopener">
+        <div class="link-icon tw-bg">
+          <i class="ti ti-brand-x" style="color:#1d9bf0"></i>
+        </div>
+        <div class="link-info">
+          <span class="link-name">Twitter / X</span>
+          <span class="link-sub">Próximamente</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- SKILLS -->
+    <p class="section-label">Stack principal</p>
+    <div class="skills-wrap">
+      <span class="skill-tag hot">.NET / C#</span>
+      <span class="skill-tag hot">Angular</span>
+      <span class="skill-tag hot">TypeScript</span>
+      <span class="skill-tag hot">React</span>
+      <span class="skill-tag hot">Node.js</span>
+      <span class="skill-tag">SQL Server</span>
+      <span class="skill-tag">PostgreSQL</span>
+      <span class="skill-tag">MongoDB</span>
+      <span class="skill-tag">Docker</span>
+      <span class="skill-tag">Kubernetes</span>
+      <span class="skill-tag">AWS</span>
+      <span class="skill-tag">Azure</span>
+      <span class="skill-tag">GCP</span>
+      <span class="skill-tag">CI/CD</span>
+      <span class="skill-tag">GitHub Copilot</span>
+      <span class="skill-tag">Clean Architecture</span>
+      <span class="skill-tag">Microservicios</span>
+      <span class="skill-tag">DDD</span>
+    </div>
+
+    <!-- TIMELINE -->
+    <p class="section-label">Trayectoria</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot current"></div>
+        <div class="tl-body">
+          <p class="tl-role">Senior Full-Stack Developer</p>
+          <p class="tl-company">BC Digital — Mifel Hipotecario (México)</p>
+          <p class="tl-period">10/2025 – 03/2026</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Full Stack Developer</p>
+          <p class="tl-company">Softtek — BCP Fintech</p>
+          <p class="tl-period">07/2022 – 09/2024</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Full Stack Developer</p>
+          <p class="tl-company">Materia Gris — Protecta Security</p>
+          <p class="tl-period">02/2021 – 07/2022</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Programador .NET</p>
+          <p class="tl-company">Certero — Chinalco Minería</p>
+          <p class="tl-period">02/2020 – 09/2020</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Programador .NET & PLSQL</p>
+          <p class="tl-company">EVERIS — Claro Telecomunicaciones</p>
+          <p class="tl-period">06/2018 – 01/2020</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <p class="tl-role">Programador .NET</p>
+          <p class="tl-company">Royal Systems — Clínica Sanna</p>
+          <p class="tl-period">09/2017 – 04/2018</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <p class="section-label">Logros medibles</p>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-num">−30%</div>
+        <div class="ach-desc">Tiempo de desarrollo integrando IA generativa en el equipo</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-num">−40%</div>
+        <div class="ach-desc">Tiempo a producción con DevOps en Claro</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-num">−15%</div>
+        <div class="ach-desc">Latencia en plataforma BCP · 2,000 transacciones/s</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-num">−25%</div>
+        <div class="ach-desc">Tiempos de transacción en seguros y telecomunicaciones</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <span class="footer-name">Luis Nilton Sánchez Rojas</span>
+      <span class="footer-tag">Lima, Perú · 2025</span>
+    </div>
+
+  </div>
+</body>
+</html>
